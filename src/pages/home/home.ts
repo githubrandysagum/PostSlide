@@ -16,14 +16,11 @@ export class HomePage {
   }
     
 
-   goToPostForm(){
+   onclickAddPost(){
      this.navCtrl.push(PostForm)
 
    }
 
    
-
-
-  
 
 }

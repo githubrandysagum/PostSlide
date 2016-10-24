@@ -4,8 +4,12 @@
   See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
   for more info on Angular 2 Components.
 -->
-<ion-list>
-  <ion-item *ngFor = 'let post of   postlist'> 
+
+<ion-slides pager>
+
+  <ion-slide *ngFor = 'let post of   postlist'>
     {{post.post_title}}
-  </ion-item>
-</ion-list>
+  </ion-slide>
+
+
+</ion-slides>

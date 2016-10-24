@@ -17,14 +17,20 @@ export class PostList {
   postlist : xa.PostQueryResponse;
 
     constructor(private xapi : Xapi) {
-      let post : xa.PostQuery = <xa.PostQuery>{};
-      post.category_name = 'student';
-      console.log(post);
-      this.xapi.get_posts(post,result =>  {
-        this.postlist = result.data;
-      },err=>{
-        this.xapi.error(err);
-      });
+       
+          let post : xa.PostQuery = <xa.PostQuery>{};
+        
+          post.category_name = 'PostSlide';   
+         
+          this.xapi.get_posts(post,result =>  {
+          
+            this.postlist = result.data;
+          
+           },err=>{
+          
+            this.xapi.error(err);
+          
+          });
 
     }
 
