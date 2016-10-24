@@ -29,7 +29,7 @@ export class PostEdit {
    
    
    onSubmit(){
-     this.post.category = 'student';
+     this.post.category = 'SlidePost';
      this.xapi.post_insert(this.post,result=>{
         if (result.success){
           this.post = <IPost>{};  
