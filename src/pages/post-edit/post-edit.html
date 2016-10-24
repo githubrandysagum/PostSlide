@@ -1,0 +1,58 @@
+<!--
+  Generated template for the PostEdit page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>post-edit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <div><img [src]="urlPhoto"></div>
+      <input type="file" (change)="onChangeFileBrowser($event)">
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input [(ngModel)]="post_title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone Number</ion-label>
+      <ion-input [(ngModel)]="mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label flaoting>Gender</ion-label>
+      <ion-input [(ngModel)]="gender" placeholder="M/F"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+<div *ngIf="loader">Connecting to server...</div>
+  
+
+
+
+  <button ion-button (click)="onClickPost()">
+    POST
+  </button>
+
+</ion-content>

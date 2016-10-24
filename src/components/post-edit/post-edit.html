@@ -6,7 +6,11 @@
 -->
 
 <ion-list>
-  
+   <ion-item>
+      <div><img [src]="urlPhoto"></div>
+      <input type="file" (change)="onChangeFileBrowser($event)">
+    </ion-item>
+
   <ion-item>
     <ion-label>Title</ion-label>
     <ion-input [(ngModel)] = 'post.post_title'></ion-input>
@@ -21,4 +25,4 @@
   </ion-item>
  
 </ion-list>
- <button ion-button (click)="onSubmit()">Post</button>
+ <button ion-button (click)="onClickPost()">Post</button>

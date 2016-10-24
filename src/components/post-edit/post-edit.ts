@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Xapi} from '../../xmodule/providers/xapi';
 import * as xa from '../../xmodule/interfaces/xapi';
-import {NavController} from 'ionic-angular';
 import {HomePage} from '../../pages/home/home';
 import {IPost } from '../../interfaces/gallery';
+import { NavController, NavParams, Events } from 'ionic-angular';
+import { PostEditService } from '../../xmodule/providers/post-edit-service';
+
 /*
   Generated class for the UserEdit component.
 
@@ -23,23 +25,58 @@ import {IPost } from '../../interfaces/gallery';
 
 
 export class PostEdit {
- post  : IPost = <IPost>{}
 
-  constructor(private navCtrl : NavController, private xapi : Xapi) {}
+ 
+ 
+ post  : IPost = <IPost>{};
+
+
+ password: string = '';
+  post_title: string = '';
+  post_content: string = '';
+  gender: 'M' | 'F' | '' = '';
+  mobile: string = '';
+  loader: boolean = false;
+  post_ID: number;
+  urlPhoto: string = "x-assets/img/anonymous.gif";
+  photoId: number = 0;
+
+
+  constructor(private navCtrl : NavController, 
+  private xapi : Xapi, 
+   private postEditService: PostEditService,
+     private navParams: NavParams,
+     private events: Events) {
+
+            events.subscribe('file-upload-success', x => this.onSuccessFileUpload(x[0])); 
+            this.post.post_ID = navParams.get('post_ID');     
+     }
+   
+    private onSuccessFileUpload( file ) {
+    console.log(file);
+    this.photoId = file.id;
+    this.urlPhoto = file.url ;
+  }
+
+  onChangeFileBrowser( $event ) {
+      this.postEditService.upload( $event.target.files );
+  }
+
+onClickPost() {
    
    
-   onSubmit(){
-     this.post.category = 'SlidePost';
-     this.xapi.post_insert(this.post,result=>{
-        if (result.success){
-          this.post = <IPost>{};  
-          this.navCtrl.setRoot(HomePage);
-        }
-     },
-     error=>{
-       this.xapi.error(error);
-     });
+    
+    this.loader = true;
+    this.postEditService.submit( this.post, res => {
+    //  this.loader = false;
+      console.log("onClickPost::callback(), ", res );
+      this.navCtrl.setRoot(HomePage);
+    }, err => {
+    //  this.loader = false;
+      console.log("err");
+    });
+}
 
-   }
-
+        
+       
 }

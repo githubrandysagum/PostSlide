@@ -5,14 +5,16 @@ import { HomePage } from '../pages/home/home';
 import {PostList} from '../components/post-list/post-list';
 import { XModule } from '../xmodule/modules/core';
 import {PostEdit} from '../components/post-edit/post-edit';
-import {PostForm} from '../pages/post-form/post-form'
+import {PostForm} from '../pages/post-form/post-form';
+import {PostEditPage} from '../pages/post-edit/post-edit'
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     PostList,
     PostEdit,
-    PostForm
+    PostForm,
+    PostEditPage
   ],
   imports: [
     XModule,
@@ -25,7 +27,8 @@ import {PostForm} from '../pages/post-form/post-form'
     HomePage,
     PostList,
     PostEdit,
-    PostForm
+    PostForm,
+     PostEditPage
   ],
   providers: []
 })

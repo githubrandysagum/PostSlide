@@ -3,6 +3,7 @@
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
+  "config":{"ionic_copy": "./src/xmodule/etc/copy-assets.js"},
   "scripts": {
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",

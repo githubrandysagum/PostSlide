@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
  import {Xapi} from "../../xmodule/providers/xapi"
 import { NavController } from 'ionic-angular';
 import { PostForm } from '../post-form/post-form';
-
+import {PostEditPage} from '../post-edit/post-edit';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
