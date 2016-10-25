@@ -11,13 +11,14 @@
 
 
     <ion-slides pager #mySlider (ionDidChange)="onSlideChanged()" [options]="mySlideOptions"  >
-      <ion-slide  *ngFor=" let post of posts ">
+      <ion-slide  *ngFor=" let post of posts; let i = index ">
        
               <img src="{{ post.image }}" *ngIf="post.image">
               <br/>
-              <ion-label floating>Title: {{ post.post_title }}</ion-label>
+              <ion-label floating>Title: {{ post.post_title }} {{i}} </ion-label>
               <br/>
               <button ion-button (click)="onClickEdit(post.ID)">Edit</button>
+              <button ion-button (click)="onclickDelete(post.ID,$index)">Delete</button>
           
       </ion-slide>
     </ion-slides>
