@@ -3,12 +3,16 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Xapi } from "../../xmodule/providers/xapi";
 import * as xi from "../../xmodule/interfaces/xapi";
 import { PostEditPage } from "../post-edit-page/post-edit-page";
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 
 @Component({
   selector: 'page-post-list',
   templateUrl: 'post-list-page.html'
 })
 export class PostListPage {
+    @ViewChild('mySlider') slider: Slides;
+
   slug: string;
   page: number = 1;
   posts = [];
@@ -24,8 +28,15 @@ export class PostListPage {
     this.loadPosts();
   }
 
+  onSlideChanged() {
 
-  loadPosts( finished? ) {
+    console.log("The app is sliding");
+    if( this.slider.isEnd()){
+        this.loadPosts();
+    }
+  }
+
+  loadPosts() {
     let arg : xi.PostQuery = xi.postQuery;
         arg.category_name = this.slug;
         arg.paged = this.page ++;
@@ -43,10 +54,10 @@ export class PostListPage {
                 if ( res.data ) alert( res.data );
                 else alert("Error on post list");
             }
-            if ( finished ) finished();
+            //if ( finished ) finished();
         },
         e => {
-            if ( finished ) finished();
+           // if ( finished ) finished();
         } );
   }
 
@@ -64,9 +75,9 @@ export class PostListPage {
 
   doInfinite( infiniteScroll ) {
 
-    this.loadPosts( () => {
-      infiniteScroll.complete();
-    });
+    //this.loadPosts( () => {
+     // infiniteScroll.complete();
+  //  });
 
   }
 
