@@ -32,6 +32,7 @@ export class PostListPage {
 
     console.log("The app is sliding");
     if( this.slider.isEnd()){
+       console.log("last slide");
         this.loadPosts();
     }
   }
@@ -40,7 +41,7 @@ export class PostListPage {
     let arg : xi.PostQuery = xi.postQuery;
         arg.category_name = this.slug;
         arg.paged = this.page ++;
-        arg.per_page = 15;
+        arg.per_page = 3;
         this.x.get_posts( arg, (res: xi.PostQueryResponse) => {
             if ( res.success ) {
                 if ( res.data && res.data.length ) {
@@ -73,18 +74,15 @@ export class PostListPage {
   }
 
 
-  doInfinite( infiniteScroll ) {
-
-    //this.loadPosts( () => {
-     // infiniteScroll.complete();
-  //  });
-
-  }
+  
 
 
   onClickEdit( post_ID ) {
     this.navCtrl.push( PostEditPage, { post_ID: post_ID });
   }
   
+  onclickAddPost(){
+     this.navCtrl.push(PostEditPage);
+  }
 
 }

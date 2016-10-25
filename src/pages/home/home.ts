@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import {PostListPage} from '../post-list-page/post-list-page';
 import {PostEditPage} from '../post-edit-page/post-edit-page';
 import { Xapi } from '../../xmodule/providers/xapi';
 
@@ -18,7 +19,11 @@ export class HomePage {
   }
 
 
+  onclickViewPost(){
+    this.navCtrl.push(PostListPage);
+  }
+
   onclickAddPost(){
-    this.navCtrl.push(PostEditPage);
+     this.navCtrl.push(PostEditPage);
   }
 }

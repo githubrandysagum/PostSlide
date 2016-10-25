@@ -44,20 +44,21 @@ export class PostEditPage {
    
     let post = {
       ID: this.post_ID,   
-      category: 'housemaid', 
+      category: 'SlidePost', 
       fid: [ this.photoId ],
       post_title : this.title,
       post_content: this.content,
       password : 234234
     };
 
-  //  this.loader = true;
+   
     this.postEditService.submit( post, res => {
-    //  this.loader = false;
       console.log("onClickPost::callback(), ", res );
+
+      //when success redirect to PostListPage
       this.navCtrl.setRoot(PostListPage);
     }, err => {
-    //  this.loader = false;
+  
       console.log("err");
     });
   }
