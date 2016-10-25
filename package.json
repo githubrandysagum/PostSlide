@@ -3,7 +3,9 @@
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
-  "config":{"ionic_copy": "./src/xmodule/etc/copy-assets.js"},
+  "config": {
+    "ionic_copy": "./src/xmodule/etc/copy-assets.js"
+  },
   "scripts": {
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",
@@ -35,7 +37,7 @@
     "@ionic/app-scripts": "^0.0.36",
     "typescript": "^2.0.3"
   },
-  "description": "galleryPost: An Ionic project",
+  "description": "XapiSample: An Ionic project",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",

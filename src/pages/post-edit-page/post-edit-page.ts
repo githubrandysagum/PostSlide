@@ -3,7 +3,7 @@ import { NavController, NavParams, Events } from 'ionic-angular';
 import { PostEditService } from '../../xmodule/providers/post-edit-service';
 @Component({
   selector: 'page-post-edit',
-  templateUrl: 'post-edit.html'
+  templateUrl: 'post-edit-page.html'
 })
 export class PostEditPage {
   password: string = '';
