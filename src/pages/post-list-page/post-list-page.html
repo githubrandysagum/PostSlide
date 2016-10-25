@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Post List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+
+    <ion-slides pager>
+      <ion-slide  *ngFor=" let post of posts ">
+       
+              <img src="{{ post.image }}" *ngIf="post.image">
+              <br/>
+              <ion-label floating>Title: {{ post.post_title }}</ion-label>
+              <br/>
+              <button ion-button (click)="onClickEdit(post.ID)">Edit</button>
+          
+      </ion-slide>
+    </ion-slides>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

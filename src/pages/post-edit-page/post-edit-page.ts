@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { PostEditService } from '../../xmodule/providers/post-edit-service';
+import {IPost} from '../../interfaces/IPost';
+import{PostListPage} from '../post-list-page/post-list-page';
+
+
 @Component({
   selector: 'page-post-edit',
   templateUrl: 'post-edit-page.html'
 })
 export class PostEditPage {
-  password: string = '';
-  post_title: string = '';
-  post_content: string = '';
-  gender: 'M' | 'F' | '' = '';
-  mobile: string = '';
-  loader: boolean = false;
+
+  title : "";
+  content: "";
   post_ID: number;
   urlPhoto: string = "x-assets/img/anonymous.gif";
   photoId: number = 0;
+
+
   constructor(public navCtrl: NavController,
      private postEditService: PostEditService,
      private navParams: NavParams,
@@ -26,10 +29,8 @@ export class PostEditPage {
       if ( this.post_ID ) {
         postEditService.load( this.post_ID, p => {
           console.log(p);
-          this.post_title = p.post_title;
-          this.post_content = p.post_content;
-          this.gender = p.meta.gender;
-          this.mobile = p.meta.mobile;
+          this.title = p.post_title;
+          this.content = p.post_content;       
           if ( p.images ) {
             this.urlPhoto = p.images[Object.keys( p.images ).pop()];
           }
@@ -42,19 +43,19 @@ export class PostEditPage {
    
    
     let post = {
-      ID: this.post_ID,
-      password: this.password,
-      category: 'housemaid',
-      post_title: this.post_title,
-      mobile: this.mobile,
-      gender: this.gender,
-      fid: [ this.photoId ]
+      ID: this.post_ID,   
+      category: 'housemaid', 
+      fid: [ this.photoId ],
+      post_title : this.title,
+      post_content: this.content,
+      password : 234234
     };
 
-    this.loader = true;
+  //  this.loader = true;
     this.postEditService.submit( post, res => {
     //  this.loader = false;
       console.log("onClickPost::callback(), ", res );
+      this.navCtrl.setRoot(PostListPage);
     }, err => {
     //  this.loader = false;
       console.log("err");
